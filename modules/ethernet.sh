@@ -10,7 +10,7 @@ check_ethernet() {
 
 install_ethernet() {
     local home_dir=${HOME_DIR:-/home/nv}
-    local asset_dir=${ASSET_DIR:-$home_dir/JetsonNXyolo}
+    local asset_dir=${ASSET_DIR:-$home_dir/uav_vision_pkg}
     local driver_archive=${ETHERNET_DRIVER_ARCHIVE:-$asset_dir/r8125-9.015.00.tar.bz2}
     local driver_dir=${ETHERNET_DRIVER_DIR:-$home_dir/r8125-9.015.00}
 

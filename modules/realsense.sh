@@ -11,7 +11,7 @@ check_realsense() {
 
 install_realsense() {
     local home_dir=${HOME_DIR:-/home/nv}
-    local asset_dir=${ASSET_DIR:-$home_dir/JetsonNXyolo}
+    local asset_dir=${ASSET_DIR:-$home_dir/uav_vision_pkg}
     local librealsense_dir=${LIBREALSENSE_DIR:-$home_dir/librealsense}
     local librealsense_zip=${LIBREALSENSE_ZIP:-$asset_dir/librealsense.zip}
     local jobs=${JOBS:-$(nproc)}

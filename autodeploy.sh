@@ -94,6 +94,7 @@ ensure_dir_from_zip() {
         return $?
     fi
 
+    echo "Missing zip archive: $zip_path"
     return 1
 }
 
@@ -111,6 +112,7 @@ ensure_dir_from_tbz2() {
         return $?
     fi
 
+    echo "Missing tar.bz2 archive: $archive_path"
     return 1
 }
 

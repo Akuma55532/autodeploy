@@ -10,7 +10,7 @@ check_opencv() {
 
 install_opencv() {
     local home_dir=${HOME_DIR:-/home/nv}
-    local asset_dir=${ASSET_DIR:-$home_dir/JetsonNXyolo}
+    local asset_dir=${ASSET_DIR:-$home_dir/uav_vision_pkg}
     local opencv_dir=${OPENCV_DIR:-$home_dir/opencv-4.6.0}
     local opencv_contrib_dir=${OPENCV_CONTRIB_DIR:-$home_dir/opencv_contrib-4.6.0}
     local opencv_zip=${OPENCV_ZIP:-$asset_dir/opencv-4.6.0.zip}
