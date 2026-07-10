@@ -3,6 +3,7 @@
 MODULE_NAME=ros
 MODULE_DEPS=""
 MODULE_DESC="Install ROS1 by FishROS"
+MODULE_ASSET_DIR=${ROS_ASSET_DIR:-${ASSET_DIR:-$HOME_DIR/uav_vision_pkg}}
 
 ros_run_fishros_with_answers() {
     local fishros_script=$1
@@ -44,7 +45,7 @@ check_ros() {
 install_ros() {
     local install_ros_with_fishros=${INSTALL_ROS_WITH_FISHROS:-1}
     local fishros_auto_feed=${FISHROS_AUTO_FEED:-1}
-    local fishros_answers=${FISHROS_ROS_ANSWERS:-$'1\n1\n2\n1\n1\n3\n1'}
+    local fishros_answers=${FISHROS_ROS_ANSWERS:-$'1\n1\n2\n2\n1\n1\n3\n1'}
     local install_dir=${FISHROS_INSTALL_DIR:-/tmp/fishros-autodeploy}
     local fishros_script="$install_dir/fishros"
 

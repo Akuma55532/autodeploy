@@ -3,6 +3,7 @@
 MODULE_NAME=cuda
 MODULE_DEPS=""
 MODULE_DESC="Install JetPack and CUDA environment"
+MODULE_ASSET_DIR=${CUDA_ASSET_DIR:-${ASSET_DIR:-$HOME_DIR/uav_vision_pkg}}
 
 check_cuda() {
     command -v nvcc >/dev/null 2>&1 &&

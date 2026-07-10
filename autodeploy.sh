@@ -33,6 +33,7 @@ MODULE_DIR="$ROOT_DIR/modules"
 PROFILE_DIR="$ROOT_DIR/profiles"
 STATE_DIR="$ROOT_DIR/state"
 STATE_FILE="$STATE_DIR/installed.state"
+HOME_DIR=${HOME_DIR:-/home/nv}
 
 declare -A MODULE_DEPS_MAP
 declare -A MODULE_DESC_MAP
@@ -77,6 +78,15 @@ require_path() {
     if [ ! -e "$target" ]; then
         echo "Missing required path: $target"
         exit 1
+    fi
+}
+
+require_asset_dir() {
+    local asset_dir=$1
+
+    if [ ! -d "$asset_dir" ]; then
+        echo "请正确将资料包$asset_dir完整解压到$HOME_DIR目录下，不要更改资料包文件的命名或路径。"
+        return 1
     fi
 }
 
@@ -465,6 +475,7 @@ run_profile_plan() {
             continue
         fi
 
+        require_asset_dir "${MODULE_ASSET_DIR:-${ASSET_DIR:-$HOME_DIR/uav_vision_pkg}}"
         echo "Install $module_name ..."
         "$install_fn"
         mark_module_done "$module_name"
@@ -504,6 +515,7 @@ run_modules_plan() {
             continue
         fi
 
+        require_asset_dir "${MODULE_ASSET_DIR:-${ASSET_DIR:-$HOME_DIR/uav_vision_pkg}}"
         echo "Install $module_name ..."
         "$install_fn"
         mark_module_done "$module_name"

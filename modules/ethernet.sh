@@ -3,6 +3,7 @@
 MODULE_NAME=ethernet
 MODULE_DEPS=""
 MODULE_DESC="Install external Ethernet drivers"
+MODULE_ASSET_DIR=${ETHERNET_ASSET_DIR:-${ASSET_DIR:-$HOME_DIR/uav_vision_pkg}}
 
 check_ethernet() {
     modinfo r8125 >/dev/null 2>&1
@@ -10,7 +11,7 @@ check_ethernet() {
 
 install_ethernet() {
     local home_dir=${HOME_DIR:-/home/nv}
-    local asset_dir=${ASSET_DIR:-$home_dir/uav_vision_pkg}
+    local asset_dir=$MODULE_ASSET_DIR
     local driver_archive=${ETHERNET_DRIVER_ARCHIVE:-$asset_dir/r8125-9.015.00.tar.bz2}
     local driver_dir=${ETHERNET_DRIVER_DIR:-$home_dir/r8125-9.015.00}
 

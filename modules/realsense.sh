@@ -3,6 +3,7 @@
 MODULE_NAME=realsense
 MODULE_DEPS="opencv"
 MODULE_DESC="Install librealsense and Python bindings"
+MODULE_ASSET_DIR=${REALSENSE_ASSET_DIR:-${ASSET_DIR:-$HOME_DIR/uav_vision_pkg}}
 
 check_realsense() {
     command -v rs-enumerate-devices >/dev/null 2>&1 ||
@@ -11,7 +12,7 @@ check_realsense() {
 
 install_realsense() {
     local home_dir=${HOME_DIR:-/home/nv}
-    local asset_dir=${ASSET_DIR:-$home_dir/uav_vision_pkg}
+    local asset_dir=$MODULE_ASSET_DIR
     local librealsense_dir=${LIBREALSENSE_DIR:-$home_dir/librealsense}
     local librealsense_zip=${LIBREALSENSE_ZIP:-$asset_dir/librealsense.zip}
     local jobs=${JOBS:-$(nproc)}

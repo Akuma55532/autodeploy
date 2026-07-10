@@ -3,6 +3,7 @@
 MODULE_NAME=opencv
 MODULE_DEPS="cuda"
 MODULE_DESC="Install OpenCV with CUDA"
+MODULE_ASSET_DIR=${OPENCV_ASSET_DIR:-${ASSET_DIR:-$HOME_DIR/uav_vision_pkg}}
 
 check_opencv() {
     pkg-config --modversion opencv4 2>/dev/null | grep -qx '4.6.0'
@@ -10,7 +11,7 @@ check_opencv() {
 
 install_opencv() {
     local home_dir=${HOME_DIR:-/home/nv}
-    local asset_dir=${ASSET_DIR:-$home_dir/uav_vision_pkg}
+    local asset_dir=$MODULE_ASSET_DIR
     local opencv_dir=${OPENCV_DIR:-$home_dir/opencv-4.6.0}
     local opencv_contrib_dir=${OPENCV_CONTRIB_DIR:-$home_dir/opencv_contrib-4.6.0}
     local opencv_zip=${OPENCV_ZIP:-$asset_dir/opencv-4.6.0.zip}
