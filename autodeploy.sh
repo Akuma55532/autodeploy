@@ -185,6 +185,19 @@ load_profile_modules() {
     printf '%s\n' "$modules"
 }
 
+apply_profile_settings() {
+    local profile_file="$PROFILE_DIR/$1.conf"
+
+    [ -f "$profile_file" ] || {
+        echo "Profile not found: $1"
+        exit 1
+    }
+
+    unset PROFILE_ASSET_DIR
+    source "$profile_file"
+    [ -z "${PROFILE_ASSET_DIR:-}" ] || ASSET_DIR=$PROFILE_ASSET_DIR
+}
+
 load_cli_modules() {
     local modules=$1
 
@@ -449,6 +462,7 @@ run_profile_plan() {
     local check_fn
     local install_fn
 
+    apply_profile_settings "$PROFILE_NAME"
     resolve_profile_plan "$PROFILE_NAME"
     validate_plan_functions
     load_state
