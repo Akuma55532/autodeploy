@@ -3,7 +3,9 @@
 MODULE_NAME=ethernet
 MODULE_DEPS=""
 MODULE_DESC="Install external Ethernet drivers"
-MODULE_ASSET_DIR=${ETHERNET_ASSET_DIR:-${ASSET_DIR:-$HOME_DIR/uav_vision_pkg}}
+# The r8125 archive is distributed with autodeploy under packs/.
+# ETHERNET_ASSET_DIR can be set when a different driver package is required.
+MODULE_ASSET_DIR=${ETHERNET_ASSET_DIR:-$ROOT_DIR/packs}
 
 check_ethernet() {
     modinfo r8125 >/dev/null 2>&1
