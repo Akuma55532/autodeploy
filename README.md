@@ -88,6 +88,8 @@ ASSET_DIR=/home/nv/JetsonNXyolo ./autodeploy.sh --modules yolov8 --run
 
 `ethernet` 模块默认从项目内 `packs/r8125-9.015.00.tar.bz2` 读取网卡驱动包；如需使用其他驱动包，可设置 `ETHERNET_ASSET_DIR`。
 
+`usb_permissions` 模块默认从项目内 `packs/70-ttyusb.rules` 读取 udev 规则；如需使用其他规则包，可设置 `USB_PERMISSIONS_ASSET_DIR`。
+
 ## 常用命令
 
 ```bash
